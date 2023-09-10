@@ -14,11 +14,15 @@ const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const shoppingListFromDB = ref(database, "shoppingList");
 
+let shoppingList = [];
 const inputFieldEl = document.getElementById("input-field");
 const addButtonEl = document.getElementById("add-button");
+const ulEl = document.getElementById("shopping-list");
 
 addButtonEl.addEventListener("click", function () {
   let inputValue = inputFieldEl.value;
   push(shoppingListFromDB, inputValue);
-  console.log(inputValue);
+  shoppingList.push(inputValue);
+  ulEl.innerHTML += "<li>" + inputValue + "</li>";
+  inputFieldEl.value = "";
 });
