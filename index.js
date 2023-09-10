@@ -23,6 +23,14 @@ addButtonEl.addEventListener("click", function () {
   let inputValue = inputFieldEl.value;
   push(shoppingListFromDB, inputValue);
   shoppingList.push(inputValue);
-  ulEl.innerHTML += "<li>" + inputValue + "</li>";
-  inputFieldEl.value = "";
+  render(inputValue);
+  clearInputField();
 });
+
+function clearInputField() {
+  inputFieldEl.value = "";
+}
+
+function render(input) {
+  ulEl.innerHTML += "<li>" + input + "</li>";
+}
